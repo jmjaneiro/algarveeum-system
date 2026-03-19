@@ -28,14 +28,31 @@ def send_raw_articles_email(articles: list, calendar_id: str, content_type: str)
     
     for idx, art in enumerate(articles, 1):
         c_id = art['content_id']
-        # Pass calendar_id if it exists
         cal_query = f"?calendar_id={calendar_id}" if calendar_id else ""
         gen_url = f"{webhook_url}/generate/{c_id}{cal_query}"
         reject_url = f"{webhook_url}/reject/{c_id}"
         
+        # Meta Dados Editoriais do Claude
+        meta = art.get('editorial_metadata', {})
+        meta_html = ""
+        if meta:
+            score = meta.get('relevance_score', '?')
+            urgency = meta.get('urgency', '?').upper()
+            angle = meta.get('content_angle', '')
+            dimensions = ", ".join(meta.get('content_dimensions', []))
+            
+            meta_html = f"""
+            <div style="margin: 12px 0; padding: 12px; background-color: #ecf0f1; border-radius: 4px; font-size: 0.9em; border-left: 3px solid #e67e22;">
+                <strong>Nota IA:</strong> {score}/10 | <strong>Urgência:</strong> {urgency} <br/>
+                <strong style="color:#e67e22">Ângulo de Publicação:</strong> {angle} <br/>
+                <span style="color:#7f8c8d; font-size:0.85em;">Dimensões: {dimensions}</span>
+            </div>
+            """
+        
         html_content += f"""
         <div style="background: #f9f9f9; padding: 15px; margin-bottom: 20px; border-radius: 5px; border-left: 4px solid #3498db;">
             <h3 style="margin-top: 0; color: #2980b9;">{idx}. {art['title']}</h3>
+            {meta_html}
             <p style="font-size: 0.9em; color: #666;">{art['summary']}</p>
             <p><a href="{art['url']}" target="_blank" style="color: #3498db; text-decoration: none;">Ler Notícia Original 🔗</a></p>
             <div style="margin-top: 15px;">

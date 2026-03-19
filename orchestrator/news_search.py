@@ -9,7 +9,6 @@ load_dotenv()
 
 TRUSTED_DOMAINS = [
     "sulinformacao.pt", "postal.pt", "algarveprimeiro.com", "barlavento.pt",
-    "publico.pt", "observador.pt", "expresso.pt", "tsf.pt", "rr.sapo.pt",
     "algarve.pt", "cm-faro.pt", "cm-loule.pt", "cm-portimao.pt", "cm-tavira.pt",
     "cm-albufeira.pt", "cm-silves.pt","amal.pt","nera.pt","ualg.pt","ccdr-alg.pt","algarve7.pt",
     "maisalgarve.pt","avozdoalgarve.pt", "jornaldoalgarve.pt"
@@ -27,9 +26,10 @@ def search_recent_news(content_type: str) -> list:
     client = TavilyClient(api_key=api_key)
     
     # To capture ALL recent news without bias, we use a generic catch-all query.
-    # We rely entirely on the include_domains and days_limit to fetch the firehose of local news.
-    query = "Algarve últimas notícias"
-    days_limit = 2
+    # Como retirámos os gigantes nacionais da lista, não precisamos de inventar com booleanos.
+    # Qualquer coisa que estes 19 sites algarvios escrevam é garantido ser do Algarve.
+    query = "Algarve" 
+    days_limit = 4
         
     print(f"Searching Tavily broadly for diverse Algarve news (Range limit: {days_limit} days). Query: {query}")
     
@@ -39,7 +39,7 @@ def search_recent_news(content_type: str) -> list:
             search_depth="advanced",
             topic="news",
             days=days_limit,
-            max_results=25,
+            max_results=40,
             include_domains=TRUSTED_DOMAINS
         )
     except Exception as e:
@@ -62,9 +62,18 @@ def search_recent_news(content_type: str) -> list:
         title = r.get("title", "").lower()
         pub_date_str = r.get("published_date")
         
-        # 1. Hard tourism filter
+        # 1a. Hard tourism & language filter
         if any(tk in content for tk in tourism_keywords) or any(tk in title for tk in tourism_keywords):
             continue 
+        if "/en/" in url or "-en-" in url:
+            continue
+            
+        # 1b. Bloquear páginas principais e categorias (Homepages).
+        # Se o URL só tiver 3 barras (https://amal.pt/) ou for muito curto, não é uma notícia.
+        clean_url = url.rstrip('/')
+        if clean_url.count("/") <= 2 or len(clean_url) < 30:
+            print(f"  [X] Rejeitado por ser Homepage/Categoria: {url}")
+            continue
             
         # 2. Strict Date Filtering via URL Patterns (e.g. publico.pt/2018/...)
         should_skip = False
@@ -104,29 +113,9 @@ def search_recent_news(content_type: str) -> list:
             "published_date": pub_date_str
         })
         
-    # Domain Balancing Algorithm
-    # Sul Informação and others publish high volume. Tavily might just pull all from them.
-    # We group by domain and pick one from each sequentially.
-    from collections import defaultdict
-    domain_groups = defaultdict(list)
-    
-    for res in valid_results:
-        domain = res["url"].split("//")[-1].split("/")[0].replace("www.", "")
-        domain_groups[domain].append(res)
-        
-    final_results = []
-    while domain_groups and len(final_results) < 10:
-        domains = list(domain_groups.keys())
-        random.shuffle(domains) # To ensure random domain order presentation
-        for dom in domains:
-            if domain_groups[dom]:
-                final_results.append(domain_groups[dom].pop(0))
-            if not domain_groups[dom]:
-                del domain_groups[dom]
-            if len(final_results) >= 10:
-                break
-                
-    return final_results
+    # We no longer balance domains here. We pass the massive raw list directly 
+    # back so that Claude can computationally select the best 10 based on civic relevance.
+    return valid_results
 
 if __name__ == "__main__":
     arts = search_recent_news("news_reaction")

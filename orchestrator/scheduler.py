@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from orchestrator.news_search import search_recent_news
+from core.ai_filter import filter_relevant_news
 from notifier.email_sender import send_raw_articles_email
 from core.supabase_client import supabase
 
@@ -40,13 +41,17 @@ def run_daily_pipeline():
         
         logger.info(f"Targeting Editorial Content: {content_type}")
         
-        # Step 1: Search News
-        articles = search_recent_news(content_type)
-        logger.info(f"Retrieved {len(articles)} valid raw articles.")
+        # Step 1: Search News (Massive Pull)
+        raw_articles = search_recent_news(content_type)
+        logger.info(f"Retrieved {len(raw_articles)} valid raw articles from Tavily.")
         
-        # Step 2: Insert Raw Articles to DB (bypass Claude Curator)
+        # Step 1.5: AI Triage (Narrow down to Top 10 Best)
+        curated_articles = filter_relevant_news(raw_articles, content_type)
+        logger.info(f"Claude AI filtered the list down to the {len(curated_articles)} most civically relevant articles.")
+        
+        # Step 2: Insert Curated Raw Articles to DB
         raw_db_articles = []
-        for art in articles:
+        for art in curated_articles:
             # Check duplicate
             res = supabase.table("published_content").select("id").eq("url", art['url']).execute()
             if len(res.data) == 0:
