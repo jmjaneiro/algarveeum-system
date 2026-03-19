@@ -11,7 +11,8 @@ TRUSTED_DOMAINS = [
     "sulinformacao.pt", "postal.pt", "algarveprimeiro.com", "barlavento.pt",
     "publico.pt", "observador.pt", "expresso.pt", "tsf.pt", "rr.sapo.pt",
     "algarve.pt", "cm-faro.pt", "cm-loule.pt", "cm-portimao.pt", "cm-tavira.pt",
-    "cm-albufeira.pt", "cm-silves.pt"
+    "cm-albufeira.pt", "cm-silves.pt","amal.pt","nera.pt","ualg.pt","ccdr-alg.pt","algarve7.pt",
+    "maisalgarve.pt","avozdoalgarve.pt", "jornaldoalgarve.pt"
 ]
 
 def search_recent_news(content_type: str) -> list:
