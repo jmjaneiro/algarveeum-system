@@ -25,39 +25,12 @@ def search_recent_news(content_type: str) -> list:
         
     client = TavilyClient(api_key=api_key)
     
-    days_limit = 1
-    
-    if content_type == "community_spotlight":
-        query = '"Algarve" AND ("associação" OR "jovens" OR "projeto" OR "iniciativa") -futebol'
-        days_limit = 7
-    elif content_type == "civic_call_to_action":
-        query = '"Algarve" AND ("habitação" OR "transportes" OR "saúde" OR "protesto" OR "mobilidade")'
-        days_limit = 2
-    elif content_type == "historical_fact":
-        query = '"Algarve" AND ("história" OR "património" OR "cultura" OR "tradição")'
-        days_limit = 30  
-    elif content_type == "regional_beauty":
-        query = '"Algarve" AND ("serra" OR "interior" OR "natureza" OR "aldeia" OR "ria formosa") -resort'
-        days_limit = 14
-    elif content_type == "practical_utility":
-        query = '"Algarve" AND ("aviso" OR "meteorologia" OR "transportes" OR "cp" OR "eva" OR "emprego" OR "bolsas" OR "obras" OR "corte de água")'
-        days_limit = 2
-    elif content_type == "cultural_entertainment":
-        query = '"Algarve" AND ("evento" OR "gratuito" OR "festa" OR "gastronomia" OR "artista" OR "desporto" OR "música" OR "feira")'
-        days_limit = 7
-    elif content_type == "interactive_conversational":
-        query = '"Algarve" AND ("tradição" OR "memória" OR "antigamente" OR "comunidade" OR "freguesia" OR "regionalismo")'
-        days_limit = 30
-    else: 
-        queries = [
-            '"Algarve" AND ("desenvolvimento" OR "governo" OR "economia")',
-            '"Algarve" AND ("sustentabilidade" OR "ambiente" OR "seca" OR "barragem")',
-            '"Algarve" AND ("juventude" OR "habitação" OR "emprego" OR "saúde")'
-        ]
-        query = random.choice(queries)
-        days_limit = 1
+    # To capture ALL recent news without bias, we use a generic catch-all query.
+    # We rely entirely on the include_domains and days_limit to fetch the firehose of local news.
+    query = "Algarve últimas notícias"
+    days_limit = 2
         
-    print(f"Searching Tavily for '{content_type}' (Range limit: {days_limit} days). Query: {query}")
+    print(f"Searching Tavily broadly for diverse Algarve news (Range limit: {days_limit} days). Query: {query}")
     
     try:
         response = client.search(
@@ -65,14 +38,14 @@ def search_recent_news(content_type: str) -> list:
             search_depth="advanced",
             topic="news",
             days=days_limit,
-            max_results=15,
+            max_results=25,
             include_domains=TRUSTED_DOMAINS
         )
     except Exception as e:
         print(f"Tavily search failed: {e}")
         return []
     
-    results = []
+    valid_results = []
     tourism_keywords = ["melhor destino de férias", "hotel", "resort", "turistas", "all-inclusive", "pacote de férias", "agência de viagens"]
     
     now = datetime.now()
@@ -123,14 +96,36 @@ def search_recent_news(content_type: str) -> list:
             except Exception:
                 pass
             
-        results.append({
+        valid_results.append({
             "title": r.get("title"),
-            "url": r.get("url"),
+            "url": url,
             "summary": r.get("content"),
             "published_date": pub_date_str
         })
         
-    return results[:10]
+    # Domain Balancing Algorithm
+    # Sul Informação and others publish high volume. Tavily might just pull all from them.
+    # We group by domain and pick one from each sequentially.
+    from collections import defaultdict
+    domain_groups = defaultdict(list)
+    
+    for res in valid_results:
+        domain = res["url"].split("//")[-1].split("/")[0].replace("www.", "")
+        domain_groups[domain].append(res)
+        
+    final_results = []
+    while domain_groups and len(final_results) < 10:
+        domains = list(domain_groups.keys())
+        random.shuffle(domains) # To ensure random domain order presentation
+        for dom in domains:
+            if domain_groups[dom]:
+                final_results.append(domain_groups[dom].pop(0))
+            if not domain_groups[dom]:
+                del domain_groups[dom]
+            if len(final_results) >= 10:
+                break
+                
+    return final_results
 
 if __name__ == "__main__":
     arts = search_recent_news("news_reaction")

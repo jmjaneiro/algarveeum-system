@@ -30,7 +30,7 @@ def generate_content(article_title: str, article_summary: str, url: str) -> dict
         "Target audience: Portuguese young adults (18-55), residents/diaspora, progressive. "
         "Language: Strict European Portuguese (PT-PT). "
         "CRITICAL: Never use touristic, beach-holiday, or 'sun and sea' language. The Algarve is a living region, not just a destination. "
-        "Your output must be in valid JSON format with exactly three string keys: 'instagram_post', 'instagram_story', and 'facebook_post'."
+        "Your output must be in valid JSON format with exactly two string keys: 'instagram_story' and 'facebook_post'."
     )
     
     user_prompt = f"""
@@ -41,9 +41,8 @@ def generate_content(article_title: str, article_summary: str, url: str) -> dict
     URL: {url}
     
     Requirements:
-    1. 'instagram_post': Engaging caption (max 2200 chars) ending with a clear call-to-action. IMPORTANT: You must ONLY use the exact hashtag #AlgarveÉUm (do not generate or add any other hashtags).
-    2. 'instagram_story': Max 3 lines, one bold punchy statement, very direct. 
-    3. 'facebook_post': Slightly longer, more informative version of the Instagram post, can include the URL directly in the text.
+    1. 'instagram_story': Max 3 lines, one bold punchy statement, very direct. IMPORTANT: You must ONLY use the exact hashtag #AlgarveÉUm (do not generate or add any other hashtags).
+    2. 'facebook_post': Instructive, engaging copy. IMPORTANT: You must ONLY use the exact hashtag #AlgarveÉUm (do not generate or add any other hashtags).
     
     Output ONLY a JSON object.
     """

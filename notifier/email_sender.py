@@ -20,9 +20,10 @@ def send_raw_articles_email(articles: list, calendar_id: str, content_type: str)
     html_content = f"""
     <html>
       <body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-        <h2 style="color: #2c3e50;">Algarve É Um - Curadoria Diária</h2>
-        <p>Bom dia! Hoje o tema editorial do calendário é: <strong>{content_type}</strong></p>
-        <p>A pesquisa automática das últimas 24/48h encontrou as seguintes notícias regionais. Escolhe a mais interessante para as nossas redes sociais:</p>
+        <h2 style="color: #2c3e50;">Algarve É Um - Jornal Diário</h2>
+        <p>Olá! Abaixo tens a lista bruta de <strong>todas as notícias relevantes das últimas 48h</strong> recolhidas diretamente dos jornais regionais, processadas para garantir variedade de fontes.</p>
+        <p>O teu papel de Editor Principal: lê as manchetes cruas e escolhe a notícia com melhor impacto. Clica em <strong>Gerar Post</strong> para a Inteligência Artificial escrever a Story e o FB Post.</p>
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 25px 0;">
     """
     
     for idx, art in enumerate(articles, 1):

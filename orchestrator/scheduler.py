@@ -55,7 +55,7 @@ def run_daily_pipeline():
                     "url": art['url'],
                     "title": art['title'],
                     "summary": art['summary'][:1000] if art['summary'] else "",
-                    "status": "raw"
+                    "status": "pending"
                 }).execute()
                 
                 art['content_id'] = pc_res.data[0]['id']
