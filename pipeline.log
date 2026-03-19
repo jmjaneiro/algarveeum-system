@@ -1,0 +1,108 @@
+2026-03-18 21:19:15,961 - apscheduler.scheduler - INFO - Adding job tentatively -- it will be properly scheduled when the scheduler starts
+2026-03-18 21:19:15,961 - AlgarveeumPipeline - INFO - Scheduler started successfully. Next automated run scheduled for 08:00 Europe/Lisbon.
+2026-03-18 21:19:15,961 - apscheduler.scheduler - INFO - Added job "run_daily_pipeline" to job store "default"
+2026-03-18 21:19:15,961 - apscheduler.scheduler - INFO - Scheduler started
+2026-03-19 11:33:19,649 - AlgarveeumPipeline - INFO - Scheduler stopped by user.
+2026-03-19 11:33:30,661 - AlgarveeumPipeline - INFO - Starting Algarve É Um daily pipeline...
+2026-03-19 11:33:30,661 - AlgarveeumPipeline - INFO - Step 1: Searching for recent news (Tavily)...
+2026-03-19 11:33:32,653 - AlgarveeumPipeline - INFO - Retrieved 14 raw articles.
+2026-03-19 11:33:32,653 - AlgarveeumPipeline - INFO - Step 2: AI Curation, Generation, and Scoring...
+2026-03-19 11:33:33,656 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.pleasantonexpress.com%2Fagriculture%2Fatascosa-4-h-announces-upcoming-workshops-deadlines%2Farticle_e7b8398c-2a55-4bc0-8605-40c96af0ed10.html "HTTP/2 200 OK"
+2026-03-19 11:33:33,780 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.fragomen.com%2Finsights%2Fdemographics-ai-and-global-mobility-in-2026-a-global-outlook-on-workforce-strategy-and-immigration-policy.html "HTTP/2 200 OK"
+2026-03-19 11:33:33,906 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.newsweek.com%2Fmillennials-just-realizing-sad-reason-house-parties-went-away-11701809 "HTTP/2 200 OK"
+2026-03-19 11:33:34,055 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fskift.com%2F2026%2F03%2F18%2Fthe-long-shadow-what-the-middle-easts-destination-brands-will-look-like-in-2028%2F "HTTP/2 200 OK"
+2026-03-19 11:33:34,176 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.lancashiretelegraph.co.uk%2Fnews%2F25944413.historic-burnley-farmhouse-earmarked-new-childrens-home%2F "HTTP/2 200 OK"
+2026-03-19 11:33:34,298 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.digitaljournal.com%2Flife%2Fthe-top-ten-european-cities-at-risk-of-becoming-ghost-towns%2Farticle "HTTP/2 200 OK"
+2026-03-19 11:33:34,411 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.thebusinessdesk.com%2Feastmidlands%2Fnews%2F2108323-freeport-launches-skills-fund-to-build-regional-workforce-pipeline "HTTP/2 200 OK"
+2026-03-19 11:33:34,510 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.yahoo.com%2Fnews%2Farticles%2Fflorida-migration-saw-steady-decline-040706291.html "HTTP/2 200 OK"
+2026-03-19 11:33:34,628 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.kcrg.com%2F2026%2F03%2F17%2Faging-untold-why-more-older-americans-are-staying-returning-workforce%2F "HTTP/2 200 OK"
+2026-03-19 11:33:34,728 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.edie.net%2Furgent-intervention-needed-as-amazon-soy-moratorium-collapses-say-uk-food-businesses%2F "HTTP/2 200 OK"
+2026-03-19 11:33:34,871 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.thebusinessdesk.com%2Fyorkshire%2Fnews%2F2152103-consultancy-chooses-south-bank-regeneration-for-its-yorkshire-hq "HTTP/2 200 OK"
+2026-03-19 11:33:35,019 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.ktiv.com%2F2026%2F03%2F17%2Faging-untold-why-more-older-americans-are-staying-returning-workforce%2F "HTTP/2 200 OK"
+2026-03-19 11:33:35,131 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.cbsnews.com%2Fminnesota%2Fvideo%2Fvoicemail-threats-lead-to-closure-of-large-minnesota-school-district%2F "HTTP/2 200 OK"
+2026-03-19 11:33:35,253 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.cbsnews.com%2Fminnesota%2Fvideo%2Frosemount-apple-valley-eagan-schools-closed-after-receiving-threats%2F "HTTP/2 200 OK"
+2026-03-19 11:33:35,759 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 404 Not Found"
+2026-03-19 11:33:36,168 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 404 Not Found"
+2026-03-19 11:33:36,169 - AlgarveeumPipeline - ERROR - Pipeline failed: Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-3-haiku-20240307'}, 'request_id': 'req_011CZCNEMNzmkEboz59C6Eg6'}
+Traceback (most recent call last):
+  File "/Users/joaojaneiro/Documents/Antigravity/algarveeum-system/orchestrator/scheduler.py", line 38, in run_daily_pipeline
+    curated_results = curate_and_prepare_content(articles)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joaojaneiro/Documents/Antigravity/algarveeum-system/orchestrator/curator.py", line 87, in curate_and_prepare_content
+    gen = generate_content(article['title'], article['summary'], article['url'])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joaojaneiro/Documents/Antigravity/algarveeum-system/core/content_generator.py", line 51, in generate_content
+    response = client.messages.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joaojaneiro/Documents/Antigravity/algarveeum-system/venv/lib/python3.12/site-packages/anthropic/_utils/_utils.py", line 282, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joaojaneiro/Documents/Antigravity/algarveeum-system/venv/lib/python3.12/site-packages/anthropic/resources/messages/messages.py", line 996, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/joaojaneiro/Documents/Antigravity/algarveeum-system/venv/lib/python3.12/site-packages/anthropic/_base_client.py", line 1364, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joaojaneiro/Documents/Antigravity/algarveeum-system/venv/lib/python3.12/site-packages/anthropic/_base_client.py", line 1137, in request
+    raise self._make_status_error_from_response(err.response) from None
+anthropic.NotFoundError: Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-3-haiku-20240307'}, 'request_id': 'req_011CZCNEMNzmkEboz59C6Eg6'}
+2026-03-19 11:43:59,492 - AlgarveeumPipeline - INFO - Starting Algarve É Um daily pipeline...
+2026-03-19 11:43:59,492 - AlgarveeumPipeline - INFO - Step 1: Searching for recent news (Tavily)...
+2026-03-19 11:44:00,956 - AlgarveeumPipeline - INFO - Retrieved 12 raw articles.
+2026-03-19 11:44:00,956 - AlgarveeumPipeline - INFO - Step 2: AI Curation, Generation, and Scoring...
+2026-03-19 11:44:01,675 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.newsweek.com%2Fgreat-powers-can-learn-from-small-island-states-in-a-changing-world-opinion-11694293 "HTTP/2 200 OK"
+2026-03-19 11:44:01,791 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.digitaljournal.com%2Fworld%2Fhow-your-business-can-help-save-the-planet-this-earth-day%2Farticle "HTTP/2 200 OK"
+2026-03-19 11:44:01,900 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.digitaljournal.com%2Flife%2Fthe-top-ten-european-cities-at-risk-of-becoming-ghost-towns%2Farticle "HTTP/2 200 OK"
+2026-03-19 11:44:02,053 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.miningweekly.com%2Farticle%2Fsava-exceeds-epr-recycling-targets-while-supporting-growth-of-pvc-circular-economy-2026-03-18 "HTTP/2 200 OK"
+2026-03-19 11:44:02,163 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fskift.com%2F2026%2F03%2F18%2Fthe-long-shadow-what-the-middle-easts-destination-brands-will-look-like-in-2028%2F "HTTP/2 200 OK"
+2026-03-19 11:44:02,290 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.forbes.com%2Fsites%2Fdianneplummer%2F2026%2F03%2F19%2Fsustainable-home-innovations-driving-longevity-and-resilience%2F "HTTP/2 200 OK"
+2026-03-19 11:44:02,401 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.azomining.com%2FNews.aspx%3FnewsID%3D18604 "HTTP/2 200 OK"
+2026-03-19 11:44:02,514 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fworldoil.com%2Fnews%2F2026%2F3%2F17%2Fbp-starts-up-quiluma-gas-field-in-angola-supplying-angola-lng-project%2F "HTTP/2 200 OK"
+2026-03-19 11:44:02,627 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.edie.net%2Furgent-intervention-needed-as-amazon-soy-moratorium-collapses-say-uk-food-businesses%2F "HTTP/2 200 OK"
+2026-03-19 11:44:02,754 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.latimes.com%2Fenvironment%2Fstory%2F2026-03-18%2Fgulf-investors-likely-to-keep-funding-africa-renewable-energy-despite-iran-war "HTTP/2 200 OK"
+2026-03-19 11:44:02,874 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.mining.com%2Fweb%2Fus-snubbed-by-lula-government-at-critical-minerals-summit%2F "HTTP/2 200 OK"
+2026-03-19 11:44:03,004 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.edie.net%2Fcase-study%2Fpowys-county-council-warm-wales-robert-owen-community-banking-fund-severn-wye-energy-agency-age-cymru-powys-care-and-repair-powys-and-eco-partners-partnership-and-collaboration-clean%2F "HTTP/2 200 OK"
+2026-03-19 11:44:03,550 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 404 Not Found"
+2026-03-19 11:44:04,093 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 404 Not Found"
+2026-03-19 11:44:04,095 - AlgarveeumPipeline - ERROR - Pipeline failed: Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-3-7-sonnet-20250219'}, 'request_id': 'req_011CZCP2eJ1sCUqkohXNpTBx'}
+Traceback (most recent call last):
+  File "/Users/joaojaneiro/Documents/Antigravity/algarveeum-system/orchestrator/scheduler.py", line 38, in run_daily_pipeline
+    curated_results = curate_and_prepare_content(articles)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joaojaneiro/Documents/Antigravity/algarveeum-system/orchestrator/curator.py", line 87, in curate_and_prepare_content
+    gen = generate_content(article['title'], article['summary'], article['url'])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joaojaneiro/Documents/Antigravity/algarveeum-system/core/content_generator.py", line 51, in generate_content
+    response = client.messages.create(
+               ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joaojaneiro/Documents/Antigravity/algarveeum-system/venv/lib/python3.12/site-packages/anthropic/_utils/_utils.py", line 282, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joaojaneiro/Documents/Antigravity/algarveeum-system/venv/lib/python3.12/site-packages/anthropic/resources/messages/messages.py", line 996, in create
+    return self._post(
+           ^^^^^^^^^^^
+  File "/Users/joaojaneiro/Documents/Antigravity/algarveeum-system/venv/lib/python3.12/site-packages/anthropic/_base_client.py", line 1364, in post
+    return cast(ResponseT, self.request(cast_to, opts, stream=stream, stream_cls=stream_cls))
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/joaojaneiro/Documents/Antigravity/algarveeum-system/venv/lib/python3.12/site-packages/anthropic/_base_client.py", line 1137, in request
+    raise self._make_status_error_from_response(err.response) from None
+anthropic.NotFoundError: Error code: 404 - {'type': 'error', 'error': {'type': 'not_found_error', 'message': 'model: claude-3-7-sonnet-20250219'}, 'request_id': 'req_011CZCP2eJ1sCUqkohXNpTBx'}
+2026-03-19 11:49:26,141 - AlgarveeumPipeline - INFO - Starting Algarve É Um daily pipeline...
+2026-03-19 11:49:26,141 - AlgarveeumPipeline - INFO - Step 1: Searching for recent news (Tavily)...
+2026-03-19 11:49:27,501 - AlgarveeumPipeline - INFO - Retrieved 11 raw articles.
+2026-03-19 11:49:27,501 - AlgarveeumPipeline - INFO - Step 2: AI Curation, Generation, and Scoring...
+2026-03-19 11:49:27,993 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.hngnews.com%2Fnation_world%2Fglobal-foundation-launches-to-reawaken-cultural-identity%2Farticle_d3bbd3d7-07ad-5de9-b00c-83e3b3f956cd.html "HTTP/2 200 OK"
+2026-03-19 11:49:28,104 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.wdtimes.com%2Fnews%2Fnational%2Fglobal-foundation-launches-to-reawaken-cultural-identity%2Farticle_12958ce5-4b01-5412-a719-67402c7a33d9.html "HTTP/2 200 OK"
+2026-03-19 11:49:28,204 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.beloitdailynews.com%2Fnews%2Fnational-news%2Fglobal-foundation-launches-to-reawaken-cultural-identity%2Farticle_f3c7bf23-131e-5789-ab62-236a571b025a.html "HTTP/2 200 OK"
+2026-03-19 11:49:28,317 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fskift.com%2F2026%2F03%2F18%2Fthe-long-shadow-what-the-middle-easts-destination-brands-will-look-like-in-2028%2F "HTTP/2 200 OK"
+2026-03-19 11:49:28,437 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.forbes.com%2Fsites%2Fpoojashah%2F2026%2F03%2F17%2Fhow-ramadan-is-bringing-together-creatives-tastemakers-and-community%2F "HTTP/2 200 OK"
+2026-03-19 11:49:28,535 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fvariety.com%2F2026%2Fglobal%2Fmarkets-festivals%2Fcannes-tarara-llama-flamenco-where-talent-ignites-icex-1236691385%2F "HTTP/2 200 OK"
+2026-03-19 11:49:28,636 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.greenwichtime.com%2Fsports%2Farticle%2Fadams-wright-and-luna-will-miss-us-friendlies-22081511.php "HTTP/2 200 OK"
+2026-03-19 11:49:28,739 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.greenwichtime.com%2Fsports%2Farticle%2Fchampions-league-barcelona-liverpool-have-work-22083075.php "HTTP/2 200 OK"
+2026-03-19 11:49:28,845 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.providencejournal.com%2Fpress-release%2Fstory%2F45077%2Fstor-mor-135-self-storage-announces-enhanced-brand-identity-and-expanded-services-release%2F "HTTP/2 200 OK"
+2026-03-19 11:49:28,932 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fwww.blufftontoday.com%2Fpress-release%2Fstory%2F62245%2Fstor-mor-135-self-storage-announces-enhanced-brand-identity-and-expanded-services-release%2F "HTTP/2 200 OK"
+2026-03-19 11:49:29,032 - httpx - INFO - HTTP Request: GET https://zjybtnswzoqzmrmdmvle.supabase.co/rest/v1/published_content?select=id&url=eq.https%3A%2F%2Fbusinessnewswales.com%2Fswansea-university-to-support-argentine-creative-entrepreneurs-through-international-bootcamp%2F%3Futm_source%3Drss%26utm_medium%3Drss%26utm_campaign%3Dswansea-university-to-support-argentine-creative-entrepreneurs-through-international-bootcamp "HTTP/2 200 OK"
+2026-03-19 11:49:31,372 - httpx - INFO - HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 200 OK"
+2026-03-19 11:49:31,400 - AlgarveeumPipeline - INFO - Approved 0 content packages.
+2026-03-19 11:49:31,400 - AlgarveeumPipeline - INFO - Step 3: Triggering Email Dispatch...
+2026-03-19 11:49:31,429 - AlgarveeumPipeline - INFO - Daily pipeline completed successfully.

@@ -7,7 +7,7 @@ load_dotenv()
 
 # We use the recommended sonnet or haiku for text generation. Haiku is fast and cheap, Sonnet is smarter.
 # We'll default to haiku for generation to keep it lightweight but effective.
-CLAUDE_MODEL = "claude-3-haiku-20240307" 
+CLAUDE_MODEL = "claude-sonnet-4-6" 
 
 def generate_content(article_title: str, article_summary: str, url: str) -> dict:
     """
@@ -27,7 +27,7 @@ def generate_content(article_title: str, article_summary: str, url: str) -> dict
         "You are an expert social media manager and regional civic activist for 'Algarve É Um', "
         "a Portuguese civic movement fighting internal regionalism in the Algarve. "
         "Your tone must be civic, proud, sometimes poetic, direct, non-partisan, and empowering. "
-        "Target audience: Portuguese young adults (18-35), residents/diaspora, progressive. "
+        "Target audience: Portuguese young adults (18-55), residents/diaspora, progressive. "
         "Language: Strict European Portuguese (PT-PT). "
         "CRITICAL: Never use touristic, beach-holiday, or 'sun and sea' language. The Algarve is a living region, not just a destination. "
         "Your output must be in valid JSON format with exactly three string keys: 'instagram_post', 'instagram_story', and 'facebook_post'."
@@ -41,7 +41,7 @@ def generate_content(article_title: str, article_summary: str, url: str) -> dict
     URL: {url}
     
     Requirements:
-    1. 'instagram_post': Engaging caption (max 2200 chars), include 3-5 relevant hashtags (e.g., #AlgarveÉUm, #OÚltimoReino, #EscolhiOAlgarve), and a clear call-to-action (e.g., sharing an opinion or reading the link in bio).
+    1. 'instagram_post': Engaging caption (max 2200 chars) ending with a clear call-to-action. IMPORTANT: You must ONLY use the exact hashtag #AlgarveÉUm (do not generate or add any other hashtags).
     2. 'instagram_story': Max 3 lines, one bold punchy statement, very direct. 
     3. 'facebook_post': Slightly longer, more informative version of the Instagram post, can include the URL directly in the text.
     

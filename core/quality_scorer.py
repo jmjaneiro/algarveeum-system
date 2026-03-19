@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # We can use haiku for fast, cheap scoring as well
-CLAUDE_MODEL = "claude-3-haiku-20240307"
+CLAUDE_MODEL = "claude-sonnet-4-6"
 
 def score_content(content_dict: dict) -> dict:
     """
