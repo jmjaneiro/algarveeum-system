@@ -45,15 +45,9 @@ async def generate_post(content_id: str, calendar_id: str = None):
         score = scoring.get("score", 0)
         
         # Save Generated Post
-        ig_post = {
-            "content_id": content_id, "platform": "instagram_post",
-            "caption": gen.get("instagram_post", ""), "score": score,
-            "improvement_suggestions": scoring.get("improvement_suggestions", [])
-        }
         gp_res = supabase.table("generated_posts").insert([
-            ig_post,
             {"content_id": content_id, "platform": "instagram_story", "story_text": gen.get("instagram_story", ""), "score": score},
-            {"content_id": content_id, "platform": "facebook_post", "caption": gen.get("facebook_post", ""), "score": score}
+            {"content_id": content_id, "platform": "facebook_post", "caption": gen.get("facebook_post", ""), "score": score, "improvement_suggestions": scoring.get("improvement_suggestions", [])}
         ]).execute()
         
         post_db_id = gp_res.data[0]['id']
@@ -72,10 +66,7 @@ async def generate_post(content_id: str, calendar_id: str = None):
             <p><strong>Artigo:</strong> {article['title']}</p>
             <p>O conteúdo já foi guardado na Base de Dados e está pronto a copiar e publicar nas redes sociais.</p>
             <div style="background: white; text-align: left; padding: 25px; border-radius: 8px; margin: 30px auto; max-width: 600px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-                <h3 style="color: #e1306c; border-bottom: 2px solid #e1306c; padding-bottom: 5px;">📱 Instagram (Feed)</h3>
-                <p style="white-space: pre-wrap; font-size: 15px;">{gen.get("instagram_post", "")}</p>
-                
-                <h3 style="color: #f77737; border-bottom: 2px solid #f77737; padding-bottom: 5px; margin-top: 30px;">📷 Instagram Story</h3>
+                <h3 style="color: #f77737; border-bottom: 2px solid #f77737; padding-bottom: 5px;">📷 Instagram Story</h3>
                 <p style="white-space: pre-wrap; font-size: 15px;">{gen.get("instagram_story", "")}</p>
                 
                 <h3 style="color: #1877f2; border-bottom: 2px solid #1877f2; padding-bottom: 5px; margin-top: 30px;">📘 Facebook Post</h3>
